@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>JSON Editor</title>
+
+  <link href="./dist/jsoneditor.css" rel="stylesheet" type="text/css">
+  <script src="./dist/jsoneditor.js"></script>
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="./css/style.css"/>
+    <!-- Latest compiled and minified CSS -->
+  <link
+    rel="stylesheet"
+    href="./css/bootstrap.min.css"
+    crossorigin="anonymous"/>
+  <style type="text/css">
+    #jsoneditor {
+      width: 50%;
+      height: 640px;
+    }
+  </style>
+</head>
+<body>
+
+
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded fixed-top">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">Json Editor Tool</a>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="nav navbar-nav navbar-right">
+      <input type="file" class="btn btn-primary navbar-btn" id="loadDocument" value="Load">
+        <span class="glyphicon glyphicon-plus"></span>
+      </input>
+      <input type="button" class="btn btn-success navbar-btn" id="saveDocument" value="Save">
+        <span class="glyphicon glyphicon-plus"></span>
+      </input>
+      <input type="button" class="btn btn-danger navbar-btn" id="saveDocument" value="Push to Server">
+        <span class="glyphicon glyphicon-plus"></span>
+      </input>
+    </div>
+  </div>
+  </nav>
+  <div id="scrollMenu">
+  </div>
+    <div class="editor" id="jsoneditor"></div>
+    <footer class="footer footerstyle" >
+      <div class="container">
+        <p class="text-muted">Open Source Tools Used: FileReader by <a class="text-muted" href="http://bgrins.github.io/filereader.js/">bgrins</a>, FileSaver by <a class="text-muted" href="https://github.com/eligrey/FileSaver.js">eligrey</a>, Code Formatter by <a class="text-muted" href="http://ace.ajax.org">ace</a> and JSON Editor by <a class="text-muted" href="https://github.com/josdejong/jsoneditor">Jos De Jong</a></p>
+      </div>
+    </footer>
+
+</body>
+<script src="https://bgrins.github.io/filereader.js/filereader.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js"></script>
+
+
+  <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
+  <script src="./js/data.js"></script>
+</html>
