@@ -2,7 +2,8 @@ const express = require('express')
 var fs = require('fs');
 var http = require('http');
 var gulp = require('gulp');
-const app = express()
+var url = require('url');
+const app = express();
 var dirPath = 'data';
 
 
@@ -19,13 +20,11 @@ app.use(function(req, res, next) {
 //     console.log("The file was saved!");
 // });
 
-var fileNames = fs.readdirSync(dirPath);	//Load file names on startup
 var i = 0;
 
 app.get('/', function (req, res) {
 	// res.send('Hello World! Test');
-  fileNames.push(i);
-  i++;
+  var fileNames = fs.readdirSync(dirPath);	//Load file names on startup
 	res.send(fileNames);
 
 	console.log("Pushing");
@@ -33,14 +32,27 @@ app.get('/', function (req, res) {
 
 app.delete('/',function (req, res) {
 	// res.send('Hello World! Test');
-  fileNames.pop();
-  i++;
-	res.send(fileNames);
 
 	console.log("popping");
 })
 
-app.get('filelist.json')
+app.use('/data', express.static(__dirname + '/data'));
+app.use(express.static(__dirname + '/public'));
+
+app.post('/', function(request, respond) {
+    var body = '';
+    console.log("writing File");
+    i++;
+    filePath = __dirname + '/data/data'+ i + '.json';
+    request.on('data', function(data) {
+        body += data;
+    });
+    request.on('end', function (){
+        fs.appendFile(filePath, body, function() {
+            respond.end('Wrote file data' + i + '.json');
+        });
+    });
+});
 
 app.listen(4000, function () {
   console.log('Example app listening on port 3000!')
