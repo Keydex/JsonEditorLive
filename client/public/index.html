@@ -6,6 +6,7 @@
   <link href="./css/jsoneditor.min.css" rel="stylesheet" type="text/css"/>
   <link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
   <link href="./css/style.min.css" rel="stylesheet" type="text/css" />
+  <link href="./css/font-awesome.min.css" rel="stylesheet" type="text/css" />
   <style type="text/css">
     #jsoneditor {
       width: 50%;
@@ -24,15 +25,16 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <div class="nav navbar-nav navbar-right">
       <input type="file" class="btn btn-primary navbar-btn" id="loadDocument" value="Load">
-        <span class="glyphicon glyphicon-plus"></span>
       </input>
-      <input type="button" class="btn btn-success navbar-btn" id="saveDocument" value="Save">
-        <span class="glyphicon glyphicon-plus"></span>
+      <input type="button" class="btn btn-success navbar-btn" id="saveDocument" value="Save Local">
       </input>
-      <input type="button" class="btn btn-danger navbar-btn" id="saveDocument" value="Push to Server">
-        <span class="glyphicon glyphicon-plus"></span>
+      <input type="button" class="btn btn-danger navbar-btn" id="saveDocumentServer" value="Push to Server">
       </input>
+      <select>
+      </select>
     </div>
+    <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>
+    <span class="sr-only">Loading...</span>
   </div>
   </nav>
   <div id="scrollMenu">
@@ -48,6 +50,8 @@
   <script type="text/javascript" src="./js/filereader.js"></script>
   <script type="text/javascript" src="./js/FileSaver.min.js"></script>
   <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
+  <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="./js/button.js"></script>
   <script type="text/javascript" src="./js/jsoneditor.min.js"></script>
   <script type="text/javascript" src="./js/main.min.js"></script>
 </html>

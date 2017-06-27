@@ -120,7 +120,6 @@ var json = {
 }
 ;
 
-
   var container = document.getElementById('jsoneditor');
   var container2 = document.getElementById('jsoneditor2');
 

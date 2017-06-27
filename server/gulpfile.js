@@ -1,27 +1,8 @@
-var gulp = require('gulp');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
-var rename = require('gulp-rename');
-var sass = require('gulp-ruby-sass');
-// Clean up file
-gulp.task('scripts', function() {
-  return gulp.src('src/js/*.js')
-    .pipe(concat('main.js'))
-    .pipe(rename({suffix: '.min'}))
-    .pipe(uglify())
-    .pipe(gulp.dest('public//js'));
-})
-gulp.task('sass', function() {
-    return sass('src/scss/style.scss', {style: 'compressed'})
-        .pipe(rename({suffix: '.min'}))
-        .pipe(gulp.dest('public/css'));
-});
-gulp.task('default', ['scripts', 'sass']);
-
 // NOTE: I previously suggested doing this through Grunt, but had plenty of problems with
 // my set up. Grunt did some weird things with scope, and I ended up using nodemon. This
 // setup is now using Gulp. It works exactly how I expect it to and is WAY more concise.
-var spawn = require('child_process').spawn,
+var gulp = require('gulp'),
+    spawn = require('child_process').spawn,
     node;
 
 /**
@@ -45,7 +26,7 @@ gulp.task('server', function() {
 gulp.task('default', function() {
   gulp.run('server')
 
-  gulp.watch(['./public/index.html'], function() {
+  gulp.watch(['./app.js', './lib/**/*.js'], function() {
     gulp.run('server')
   })
 
