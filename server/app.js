@@ -1,10 +1,11 @@
 const express = require('express')
+var gulp = require('gulp');
 const app = express()
 
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname + '../client/index.html'));
+	console.log('Test');
 })
 
-app.listen(3000, function () {
+app.listen(4000, function () {
   console.log('Example app listening on port 3000!')
 })
