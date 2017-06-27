@@ -1,10 +1,14 @@
 //Button Logic
 $("#saveDocumentServer").click(function(){
-    $.get("http://localhost:4000", function(data, status){
-        alert("Data: " + data + "\nStatus: " + status);
-    });
-    console.log("test");
+    // $.get("http://localhost:4000/", function(data, status){
+    //     alert("Data: " + data + "\nStatus: " + status);
+    // });
+    // console.log("test");
+    $.post("http://localhost:4000/", editor.getText());
+    console.log(editor.getText());
 });
+
+$("#sendJson")
 
 $(document).ready(function()
 {
