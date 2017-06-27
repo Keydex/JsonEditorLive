@@ -5,7 +5,7 @@ var gulp = require('gulp');
 var url = require('url');
 const app = express();
 var dirPath = 'data';
-
+var jsonfile = require('jsonfile')
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -48,9 +48,15 @@ app.post('/', function(request, respond) {
         body += data;
     });
     request.on('end', function (){
-        fs.appendFile(filePath, body, function() {
-            respond.end('Wrote file data' + i + '.json');
-        });
+        // fs.appendFile(filePath, body, function() {
+
+        // });
+        jsonfile.writeFile(filePath, body, function (err) {
+          console.error(err)
+        })
+        console.log(body);
+        respond.end('Wrote file data' + i + '.json');
+        console.log("File" + i);
     });
 });
 
