@@ -1,18 +1,19 @@
 //Button Logic
 $("#saveDocumentServer").click(function(){
-    // $.get("http://localhost:4000/", function(data, status){
-    //     alert("Data: " + data + "\nStatus: " + status);
-    // });
-    // console.log("test");
-    $.post("http://localhost:4000/", editor.getText());
-    console.log(editor.getText());
+    $.post("http://localhost:4000", {filename: $("#filenameInput").val(), jsonData: editor.getText()});
+    console.log($("#filenameInput").val() + editor.getText());
+    // console.log($("#filename").val);
 });
 
-$("#sendJson")
+
+console.log("Geing File Names");
 
 $(document).ready(function()
 {
-    $.getJSON("/echo/json/",function(obj)
+  $.get("http://localhost:4000", function(data, status){
+    var json = data;
+  });
+    $.getJSON(json,function(obj)
    {
          $.each(json.cars,function(key,value)
          {

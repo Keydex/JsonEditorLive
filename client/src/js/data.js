@@ -1,10 +1,7 @@
 var json = {
   "ns0:Envelope": {
-    "xmlns:ns0": "http://www.ual.com/eai/ops/uflifo",
     "ns0:Header": {
       "ns1:eventHeader": {
-        "xmlns:ns1": "http://www.ual.com/eai/ops/uflifo/event/header",
-        "eventID": "BE-FLIFO1489005934532",
         "eventName": "GATE",
         "eventCreationSystem": "BE-FLIFO",
         "eventCreationTime": "2017-03-08T20:45:34.532Z",
@@ -71,7 +68,6 @@ var json = {
           "boardingTime": "21:30:00",
           "custDepGate": "   96",
           "ns1:Equip": {
-            "xmlns:ns1": "http://www.ual.com/eai/ops/uflifo/opsFltLeg",
             "cabin1Cnt": "48",
             "cabin2Cnt": "0",
             "cabin3Cnt": "204",
@@ -80,7 +76,6 @@ var json = {
             "eqpDesc": "Boeing 787-9"
           },
           "ns1:OperationsFlightLoad": {
-            "xmlns:ns1": "http://www.ual.com/eai/ops/uflifo/opsFltLeg",
             "clrFuelWt": "0",
             "zeroFuelWt": "0",
             "firstPsgrCnt": "46",
@@ -88,9 +83,7 @@ var json = {
             "coachPsgrCnt": "147"
           },
           "ns1:CustRefData": {
-            "xmlns:ns1": "http://www.ual.com/eai/ops/uflifo/opsFltLeg",
             "ns2:custStatusInfo": {
-              "xmlns:ns2": "http://www.ual.com/eai/ops/uflifo/common",
               "displayInd": "true",
               "reasonType": "ONT",
               "ns2:FltLegStatus": [
@@ -111,7 +104,6 @@ var json = {
                 }
               ]
             },
-            "ns2:delayCodes": { "xmlns:ns2": "http://www.ual.com/eai/ops/uflifo/common" }
           }
         }
       }

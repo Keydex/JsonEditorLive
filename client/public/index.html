@@ -3,6 +3,7 @@
 <head>
   <title>JSON Editor</title>
 
+  <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
   <link href="./css/jsoneditor.min.css" rel="stylesheet" type="text/css"/>
   <link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
   <link href="./css/style.min.css" rel="stylesheet" type="text/css" />
@@ -39,10 +40,16 @@
   </nav>
   <div id="scrollMenu">
   </div>
-      <div class="row">
-      <div class="editor col-md-9" id="jsoneditor"></div>
-      <div class="col">Test serseresr</div>
-  </div>
+      <div class="editor" id="jsoneditor"></div>
+      <div class="buttonBox">
+        <form>
+          <div class="form-group">
+            <label for="inputsm">FileName</label>
+            <input class="form-control input-sm" id="filenameInput" type="text">
+          </div>
+        </form>
+
+      </div>
     <footer class="footer footerstyle" >
       <div class="container">
         <p class="text-muted">Open Source Tools Used: FileReader by <a class="text-muted" href="http://bgrins.github.io/filereader.js/">bgrins</a>, FileSaver by <a class="text-muted" href="https://github.com/eligrey/FileSaver.js">eligrey</a>, Code Formatter by <a class="text-muted" href="http://ace.ajax.org">ace</a> and JSON Editor by <a class="text-muted" href="https://github.com/josdejong/jsoneditor">Jos De Jong</a></p>

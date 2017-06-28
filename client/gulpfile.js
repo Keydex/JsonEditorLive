@@ -45,7 +45,8 @@ gulp.task('server', function() {
 gulp.task('default', function() {
   gulp.run('server')
 
-  gulp.watch(['./public/index.html'], function() {
+  gulp.watch(['./public/index.html', './src/js/*.js', './src/scss/*.scss'], function() {
+    gulp.run('scripts', 'sass')
     gulp.run('server')
   })
 
