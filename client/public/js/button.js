@@ -1,16 +1,21 @@
 //Button Logic
 $("#saveDocumentServer").click(function(){
-    $.post("http://localhost:4000", {filename: $("#filenameInput").val(), jsonData: editor.getText()});
-    console.log($("#filenameInput").val() + editor.getText());
-    // console.log($("#filename").val);
+    $.post("http://localhost:4000", {filename: $("#filenameInput").val(), jsonData: editor.getText()}, function(){
+      console.log($("#filenameInput").val() + editor.getText());
+      updateDropDown();
+    });
 });
 
 var filenameList = [];
 
-$(document).ready(function()
-{
-  var dropdown = $("#dropdownFiles")
-  console.log("Geing File Names");
+$(document).ready(function(){
+  updateDropDown();
+});
+
+function updateDropDown(){
+  var dropdown = $("#dropdownFiles");
+  $("#dropdownFiles").empty();
+  console.log("Getting File Names");
   $.get("http://localhost:4000", function(data, status){
     var filenameList = data;
     console.log(filenameList);
@@ -19,4 +24,4 @@ $(document).ready(function()
         console.log("Attempting to write");
     });
   });
-});
+}
