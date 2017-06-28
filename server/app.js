@@ -15,19 +15,12 @@ app.use(function(req, res, next) {
   next();
 });
 
-// fs.writeFile('/data/', "Hey there!", function(err) {
-//     if(err) {
-//         return console.log(err);
-//     }
-//     console.log("The file was saved!");
-// });
-
 var i = 0;
 
 app.get('/', function (req, res) {
 	// res.send('Hello World! Test');
   var fileNames = fs.readdirSync(dirPath);	//Load file names on startup
-	res.send(fileNames);
+	res.json(fileNames);
 
 	console.log("Sending File Names");
 })
@@ -37,7 +30,6 @@ app.delete('/',function (req, res) {
   del(['tmp/*.js', '!tmp/unicorn.js']).then(paths => {
       console.log('Deleted files and folders:\n', paths.join('\n'));
   });
-	console.log("popping");
 })
 
 app.use('/data', express.static(__dirname + '/data'));
@@ -51,25 +43,16 @@ app.post('/', urlencodedParser, function(request, respond) {
     var fileNames = fs.readdirSync(dirPath);	//Load file names on startup
     console.log(request.body.filename);
     //Check if filename exists
-    var body = '';
     console.log("writing File");
-    i++;
-    filePath = __dirname + '/data/data'+ i + '.json';
-    request.on('data', function(data) {
-        body += data
-        console.log(body);
-        console.log(data[1]);
-    });
-    request.on('end', function (){
-        jsonfile.writeFile(filePath, body, function (err) {
+    filePath = __dirname + '/data/' + request.body.filename + '.json';
+
+        jsonfile.writeFile(filePath, request.body.jsonData, function (err) {
           console.error(err)
         })
         // console.log(body);
-        respond.end('Wrote file data' + i + '.json');
-        console.log("File" + i);
-    });
+        respond.end('Wrote file data' + request.body.filename + '.json at' + filePath);
 });
 var port = 4000;
 app.listen(port, function () {
-  console.log('Example app listening on port ' + port)
+  console.log('Server Back-end Running on ' + port)
 })

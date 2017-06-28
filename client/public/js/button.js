@@ -5,31 +5,18 @@ $("#saveDocumentServer").click(function(){
     // console.log($("#filename").val);
 });
 
-
-console.log("Geing File Names");
+var filenameList = [];
 
 $(document).ready(function()
 {
+  var dropdown = $("#dropdownFiles")
+  console.log("Geing File Names");
   $.get("http://localhost:4000", function(data, status){
-    var json = data;
+    var filenameList = data;
+    console.log(filenameList);
+    $.each(filenameList, function(filenameList) {
+        dropdown.append($("<option />").val(this).text(this));
+        console.log("Attempting to write");
+    });
   });
-    $.getJSON(json,function(obj)
-   {
-         $.each(json.cars,function(key,value)
-         {
-             var option = $('<option />').val(value.carID).text(value.CarType);
-        $("#dropDownDest").append(option);
-         });
-
-    });
-
-    //if the selcted is volvo, then display the img
-    $('#dropDownDest').on('change', function(){
-        if($(this).val() == 'vol123r'){
-            $('#imghide').removeClass('hide');
-        }else{
-            $('#imghide').addClass('hide');
-        }
-
-    });
 });
