@@ -60,6 +60,18 @@ app.post('/load', urlencodedParser, function(request, respond) {
   respond.json(obj);
   respond.end("Post Load Success");
 });
+app.post('/delete', urlencodedParser, function(request, respond) {
+  if (!request.body) return respond.sendStatus(400)
+  fs.unlink(__dirname + '/data/' + request.body.filename, function(err){
+    if(err) {
+    console.log("File "+ request.body.filename + " does not exist!")}
+    else{
+      console.log("Deleted file " + request.body.filename);
+    }
+  });
+  respond.json();
+  respond.end("Deleted file success");
+});
 var port = 4000;
 app.listen(port, function () {
   console.log('Server Back-end Running on ' + port)

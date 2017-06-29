@@ -24,16 +24,20 @@ $('#serverLoad').on('click', function () {
    console.log("The button has been pressed");
    console.log("Selected field is = " + $("#dropdownFiles :selected").text());
    $.post("http://localhost:4000/load", {filename: $("#dropdownFiles :selected").text()}, function(data, status){
-     console.log("sending" + $("#filenameInput").val());
-     console.log("response");
+     console.log("sending " + $("#filenameInput").val() + ".json");
      editor.set($.parseJSON(data));
      editor.expandAll();
    });
 })
 
 $('#serverDelete').on('click', function () {
-   console.log("The button has been pressed");
-})
+  $.post("http://localhost:4000/delete", {filename: $("#dropdownFiles :selected").text()}, function(data, status){
+    console.log("Deleting " + $("#filenameInput").val() + ".json");
+    console.log("response");
+  });
+  console.log("The button has been pressed");
+  updateDropDown();
+});
 
 $(document).ready(function(){
   updateDropDown();
