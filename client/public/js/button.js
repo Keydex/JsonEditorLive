@@ -64,3 +64,7 @@ $("#filenameInput").keydown(function(event){
         sendToServer();
     }
 });
+
+setInterval(function(){ //Update dropdown every 5 seconds
+  updateDropDown();
+},60000);
