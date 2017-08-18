@@ -3,7 +3,7 @@
 <head>
   <title>JSON Editor</title>
 
-  <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+  <script src="./js/tether.min.js"></script>
   <link href="./css/jsoneditor.min.css" rel="stylesheet" type="text/css"/>
   <link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
   <link href="./css/style.min.css" rel="stylesheet" type="text/css" />
@@ -44,7 +44,7 @@
         <form id = "serverForm">
           <div class="form-group">
             <label for="inputsm">FileName</label>
-            <input class="form-control input-sm" id="filenameInput" type="text">
+            <input class="form-control input-sm" id="filenameInput" autocomplete="off" type="text">
             <button type="button" class="btn btn-success" id="serverSend">Save</button>
           </div>
           <select id="dropdownFiles">
@@ -63,10 +63,10 @@
     </footer>
 
 </body>
+  <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
   <script type="text/javascript" src="./js/api.js"></script>
   <script type="text/javascript" src="./js/filereader.js"></script>
   <script type="text/javascript" src="./js/FileSaver.min.js"></script>
-  <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
   <script type="text/javascript" src="./js/bootstrap.min.js"></script>
   <script type="text/javascript" src="./js/button.js"></script>
   <script type="text/javascript" src="./js/jsoneditor.min.js"></script>

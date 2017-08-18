@@ -1,8 +1,9 @@
 //Button Logic
+
 var filenameList = [];
 $("#saveDocumentServer").click(function(){
 
-    $.post("http://localhost:4000", {filename: $("#filenameInput").val(), jsonData: editor.get()}, function(){
+    $.post(hostname, {filename: $("#filenameInput").val(), jsonData: editor.get()}, function(){
       console.log($("#filenameInput").val() + editor.get());
       updateDropDown();
     });
@@ -22,7 +23,6 @@ $('#serverDelete').on('click', function () {
   if(confirm("Are you sure you want to delete "+file+" from the server?") == true){
     deleteFromServer();
     updateDropDown();
-    alert(file+" was deleted from the server.");
   }
 });
 
@@ -34,7 +34,7 @@ function updateDropDown(){
   var dropdown = $("#dropdownFiles");
   $("#dropdownFiles").empty();
   console.log("Getting File Names");
-  $.get("http://localhost:4000", function(data, status){
+  $.get(hostname, function(data, status){
     var filenameList = data;
     console.log(filenameList);
     $.each(filenameList, function(filenameList) {
