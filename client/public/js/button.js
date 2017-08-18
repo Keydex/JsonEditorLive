@@ -18,6 +18,16 @@ $('#serverLoad').on('click', function () {
   loadFromServer();
 })
 
+$('#serverAPI_1').on('click', function () {
+  serverHost(1);
+})
+$('#serverAPI_2').on('click', function () {
+  serverHost(2);
+})
+$('#serverAPI_3').on('click', function () {
+  serverHost(3);
+})
+
 $('#serverDelete').on('click', function () {
   var file = $("#dropdownFiles :selected").text();
   if(confirm("Are you sure you want to delete "+file+" from the server?") == true){

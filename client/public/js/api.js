@@ -31,6 +31,13 @@ function sendToServer(){
   });
 }
 
+function serverHost(val){
+  $.post(hostname + "/api/request_" + val, {filename: $("#dropdownFiles :selected").text()}, function(data, status){
+    console.log("sending " + $("#filenameInput").val() + ".json for Hosting");
+    alert("Api is now being hosted at " + hostname + "/api/request_" + val)
+  });
+}
+
 function loadFromServer(){
   console.log("The button has been pressed");
   console.log("Selected field is = " + $("#dropdownFiles :selected").text());

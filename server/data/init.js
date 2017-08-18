@@ -1,3 +1,0 @@
-{
-"TestJS":"Test JS File"
-}

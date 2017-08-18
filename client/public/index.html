@@ -29,11 +29,8 @@
       </input>
       <input type="button" class="btn btn-success navbar-btn" id="saveDocument" value="Save Local">
       </input>
-      <input type="button" class="btn btn-danger navbar-btn" id="saveDocumentServer" value="Push to Server">
-      </input>
 
     </div>
-    <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>
     <span class="sr-only">Loading...</span>
   </div>
   </nav>
@@ -51,7 +48,10 @@
           </select>
           <button type="button" class="btn btn-warning" id="serverLoad">Load</button>
           <button type="button" class="btn btn-danger" id="serverDelete">Delete</button>
-          <ul id="bootDrop" class="dropdown-menu" role="menu" aria-labelledby="menu1">
+          <button type="button" class="btn btn-default" id="serverAPI_1">API 1</button>
+          <button type="button" class="btn btn-default" id="serverAPI_2">API 2</button>
+          <button type="button" class="btn btn-default" id="serverAPI_3">API 3</button>
+          <ul id="bootDrop" class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="menu1">
           </ul>
         </form>
 

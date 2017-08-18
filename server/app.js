@@ -8,7 +8,7 @@ var dirPath = 'data';
 var jsonfile = require('jsonfile')
 const del = require('del');
 var bodyParser = require('body-parser')
-
+var error = {"error":"API is not set"};
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -24,6 +24,41 @@ app.get('/', function (req, res) {
 
 	console.log("Sending File Names");
 })
+
+var json1_filename = "";
+var json2_filename = "";
+var json3_filename = "";
+
+app.get('/api/request_1', function (req, res) {
+  if(json1_filename == ""){
+    res.json(error);
+  }
+  else{
+    var obj = JSON.parse(fs.readFileSync(__dirname + '/data/' + json1_filename, 'utf8'));
+    console.log("Attempting to send " + json1_filename);
+    res.json(obj);
+  }
+})
+
+app.get('/api/request_2', function (req, res) {
+  if(json2_filename == ""){
+    res.json(error);
+  }
+  else{
+    var obj = JSON.parse(fs.readFileSync(__dirname + '/data/' + json2_filename, 'utf8'));
+    res.json(obj);
+  }
+})
+app.get('/api/request_3', function (req, res) {
+  if(json3_filename == ""){
+    res.json(error);
+  }
+  else{
+    var obj = JSON.parse(fs.readFileSync(__dirname + '/data/' + json3_filename, 'utf8'));
+    res.json(obj);
+  }
+})
+
 
 app.delete('/',function (req, res) {
 	// res.send('Hello World! Test');
@@ -52,6 +87,30 @@ app.post('/', urlencodedParser, function(request, respond) {
         console.log(request.body.jsonData);
         // console.log(body);
         respond.end('Wrote file data' + request.body.filename + '.json at' + filePath);
+});
+app.post('/api/request_1', urlencodedParser, function(request, respond) {
+  if (!request.body) return respond.sendStatus(400)
+    var fileNames = fs.readdirSync(dirPath);	//Load file names on startup
+    filePath = __dirname + '/data/' + request.body.filename;
+    console.log("Loading API 1 with " + request.body.filename);
+    json1_filename = request.body.filename;
+        respond.end('API ' + request.body.filename + ' at' + filePath);
+});
+app.post('/api/request_2', urlencodedParser, function(request, respond) {
+  if (!request.body) return respond.sendStatus(400)
+    var fileNames = fs.readdirSync(dirPath);	//Load file names on startup
+    filePath = __dirname + '/data/' + request.body.filename;
+    console.log("Loading API 2 with " + request.body.filename + '.json');
+    json2_filename = request.body.filename;
+        respond.end('API ' + request.body.filename + ' at' + filePath);
+});
+app.post('/api/request_3', urlencodedParser, function(request, respond) {
+  if (!request.body) return respond.sendStatus(400)
+    var fileNames = fs.readdirSync(dirPath);	//Load file names on startup
+    filePath = __dirname + '/data/' + request.body.filename;
+    console.log("Loading API 3 with " + request.body.filename + '.json');
+    json3_filename = request.body.filename;
+        respond.end('API ' + request.body.filename + ' at' + filePath);
 });
 app.post('/load', urlencodedParser, function(request, respond) {
   if (!request.body) return respond.sendStatus(400)

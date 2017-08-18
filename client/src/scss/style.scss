@@ -24,3 +24,9 @@ html{
   width: 20%;
   padding-right: 2vw;
 }
+
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
